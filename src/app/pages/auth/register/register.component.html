@@ -1,0 +1,75 @@
+<div class="flex justify-content-center align-items-center h-screen">
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="registerForm"
+    class="flex flex-column gap-1 register-form bg-white border-gray-100 border-1 border-round-2xl w-22rem p-3 px-5 justify-content-center"
+  >
+    <div class="flex flex-column my-5 gap-3">
+      <span class="white-space-nowrap mx-auto text-2xl font-bold accent-navy">
+        <img class="w-7rem" src="assets/logo.svg" alt="" />
+      </span>
+      <small class="mx-auto text-sm text-indigo-600">
+        Already have an account?
+        <a
+          href="auth/sign-in"
+          class="no-underline text-sm font-bold text-indigo-700 hover:underline"
+          >Sign-in</a
+        >
+      </small>
+    </div>
+
+    <div class="flex flex-column mb-4">
+      <input
+        formControlName="email"
+        class="p-inputtext"
+        type="text"
+        placeholder="Email"
+      />
+      @if (txtEmail.dirty || showFormErrors) {
+      <small class="text-red-400 mx-1" *ngIf="txtEmail.hasError('required')">
+        email is required
+      </small>
+      <small class="text-red-400 mx-1" *ngIf="txtEmail.hasError('email')">
+        please enter a valid email
+      </small>
+      }
+    </div>
+
+    <div class="flex flex-column mb-3">
+      <input
+        formControlName="password"
+        class="p-inputtext"
+        placeholder="Password"
+      />
+
+      @if (txtPassword.dirty ||showFormErrors ) {
+      <small class="text-red-400 mx-1" *ngIf="txtPassword.hasError('required')"
+        >password is reqiured
+      </small>
+      <small class="text-red-400 mx-1" *ngIf="txtPassword.hasError('minlength')"
+        >password must be at least 6 characters
+      </small>
+      }
+    </div>
+
+    @if (!registerState?.success && registerState?.data!=null) {
+    <small class="text-red-400 mx-1" *ngIf="registerState?.data.code == 400">
+      {{ registerState.data.messages }}
+    </small>
+    }
+
+    <div class="mt-3 mb-5">
+      <p-button
+        type="submit"
+        styleClass=""
+        [disabled]=""
+        raised="true"
+        [loading]="registerState?.awaitingResponse"
+        loadingIcon="pi pi-spin pi-spinner"
+        [label]="registerState?.awaitingResponse ? '' : 'sign-up'"
+        styleClass="w-full"
+      >
+      </p-button>
+    </div>
+  </form>
+</div>
