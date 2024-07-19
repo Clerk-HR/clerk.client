@@ -1,0 +1,19 @@
+import { ResolveStart } from "@angular/router";
+import { User } from "./user";
+import { Organization } from "../Organization/organization";
+
+export interface Member {
+    id: string,
+    user: User,
+    organization: Organization,
+    department: string,
+    roles: Role[],
+    JoinedOn: number
+}
+
+
+export enum Role {
+    User,
+    employee,
+    manager
+}

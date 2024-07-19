@@ -18,7 +18,6 @@ export const ApiInterceptor: HttpInterceptorFn = (req, next) => {
       if (event instanceof HttpResponse) {
         const response: ApiSuccess = event.body
         apiCallStateService.update(source, true, response)
-
         messageService.add({
           severity: 'success',
           summary: 'Success',

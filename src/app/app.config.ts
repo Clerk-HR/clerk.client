@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), provideAnimations(),
     provideHttpClient(
       withInterceptors([
-        ApiInterceptor, AuthInterceptor
+        AuthInterceptor, ApiInterceptor
       ])
     ),
     MessageService

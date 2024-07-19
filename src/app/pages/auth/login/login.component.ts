@@ -46,7 +46,7 @@ export class LoginComponent {
       this.showFormErrors = true;
       return;
     }
-    // this.authService.registerUser(this.loginForm.value).subscribe();
+    this.authService.login(this.loginForm.value).subscribe();
   }
 
 }

@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
       this.showFormErrors = true
       return;
     }
-    this.authService.registerUser(this.registerForm.value).subscribe();
+    this.authService.register(this.registerForm.value).subscribe();
   }
 
 

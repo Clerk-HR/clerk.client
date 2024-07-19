@@ -1,4 +1,6 @@
-export interface User {
+import { Member } from "./member"
+
+export type User = {
     id: string,
     email: string,
     avatarUrl?: string,
@@ -6,9 +8,12 @@ export interface User {
     phoneNumber: string,
     onBoarding: OnBoarding,
     createdOn: number
+    Profile: Member
 }
 
+
 export enum OnBoarding {
+    CreateAccount,
     UserDetails,
     Organization,
     Complete

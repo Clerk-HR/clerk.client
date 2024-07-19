@@ -1,4 +1,8 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiSuccess } from '../shared/api-response';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +10,12 @@ import { Injectable } from '@angular/core';
 export class UserService {
   constructor() {
   }
+  http = inject(HttpClient)
+
+  baseUrl = environment.baseUrl + "/users"
+
+  fetchCurrentUser(): Observable<ApiSuccess> {
+    return this.http.get<ApiSuccess>(`${this.baseUrl}/current-user`);
+  }
+
 }
