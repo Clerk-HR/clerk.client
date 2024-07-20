@@ -1,12 +1,10 @@
-import { ApiError } from './../../../Core/shared/api-response';
-import { ApiCallState, ApiCallStateService } from './../../../Core/shared/api-call-state.service';
+import { ApiCallState, ApiCallStateService } from '../../../Core/shared/api-call-state.service';
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, inject, Inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { ToastModule } from 'primeng/toast'
 import { AuthService } from '../../../Core/Auth/auth.service';
-import { subscribeOn, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -54,7 +52,7 @@ export class RegisterComponent implements OnInit {
       this.showFormErrors = true
       return;
     }
-    this.authService.register(this.registerForm.value).subscribe();
+    this.authService.register(this.registerForm.value);
   }
 
 

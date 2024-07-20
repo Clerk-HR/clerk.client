@@ -25,26 +25,6 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
     })
   }
 
-  if (source == 'auth.register' || source == 'auth.login') {
-    return next(authRequest).pipe(
-      map((event: HttpEvent<any>) => {
-        if (event instanceof HttpResponse) {
-          const response: ApiSuccess = event.body
-          const authResponse = response.data as AuthResponse;
-          authService.setToken(authResponse.accessToken)
-          authService.authenticate();
-        }
-        return event
-      }),
-      catchError((err: HttpErrorResponse) => {
-        if (err.status === 401) {
-          router.navigateByUrl('auth/sign-in')
-        }
-        return throwError(() => err)
-      })
-    )
-  }
-
   return next(authRequest).pipe(
     catchError((err) => {
       if (err.status === 401) {

@@ -6,7 +6,6 @@ export interface Member {
     id: string,
     user: User,
     organization: Organization,
-    department: string,
     roles: Role[],
     JoinedOn: number
 }

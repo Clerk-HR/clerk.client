@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpInterceptorFn, HttpResponse } from '@angular/common/http';
 import { inject, Inject } from '@angular/core';
-import { ApiCallStateService } from './api-call-state.service';
+import { ApiCallStateService } from '../shared/api-call-state.service';
 import { MessageService } from 'primeng/api';
 import { catchError, map, throwError } from 'rxjs';
 import { ApiError, ApiSuccess } from './api-response';

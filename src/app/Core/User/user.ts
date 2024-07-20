@@ -8,13 +8,13 @@ export type User = {
     phoneNumber: string,
     onBoarding: OnBoarding,
     createdOn: number
-    Profile: Member
+    profile: Member
 }
 
 
 export enum OnBoarding {
     CreateAccount,
     UserDetails,
-    Organization,
+    JoinCreate,
     Complete
 };

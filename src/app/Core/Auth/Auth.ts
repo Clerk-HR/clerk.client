@@ -1,8 +1,7 @@
 import { Role } from "../User/member"
 import { OnBoarding } from "../User/user"
-import { UserStateService } from "../User/user-state.service"
 
-export interface AuthStatus {
+export interface UserState {
     isAuthenticated: boolean,
     roles: Role[],
     user?: any,

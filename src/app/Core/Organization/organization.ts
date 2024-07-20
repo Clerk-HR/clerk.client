@@ -5,7 +5,6 @@ export type Organization = {
     name: string,
     description?: string,
     logoUrl?: string,
-    departments: string[],
     createdOn: number,
     members: Member[]
 }

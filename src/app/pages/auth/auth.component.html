@@ -6,3 +6,18 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<p-dialog
+  [modal]="true"
+  closable="false"
+  [visible]="authInitState.awaitingResponse"
+  position="center"
+  styleClass="mb-8 "
+>
+  <div class="flex flex-column gap-3 align-items-center mb-2">
+    <p class="m-0 text-indigo-600">Signing you in...</p>
+    <span>
+      <i class="text-xl pi pi-spinner pi-spin text-indigo-600"></i>
+    </span>
+  </div>
+</p-dialog>

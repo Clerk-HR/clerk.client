@@ -1,0 +1,70 @@
+<div class="flex justify-content-center align-items-center mt-7">
+  <div class="w-22rem h-22rem flex flex-column gap-3">
+    <button
+      (click)="showJoinDialog = !showJoinDialog"
+      class="p-3 bg-white shadow-1 border-1 border-gray-100 border-round-xl flex align-items-center gap-3 hover:bg-gray-100"
+    >
+      <i
+        class="pi pi-users text-white bg-indigo-500 border-round p-3 text-lg"
+      ></i>
+      <div class="flex flex-column align-items-start gap-1">
+        <p class="m-0 font-semibold text-gray-700" style="font-size: medium">
+          Join an Organization
+        </p>
+        <small class="text-gray-400">become an employee</small>
+      </div>
+    </button>
+
+    <button
+      (click)="showCreateOrg = !showCreateOrg"
+      class="bg-white p-3 shadow-1 border-1 border-gray-100 border-round-xl flex align-items-center gap-3 hover:bg-gray-100"
+    >
+      <i
+        class="pi pi-warehouse text-indigo-500 bg-white border-1 border-round p-3"
+      ></i>
+      <div class="flex flex-column align-items-start gap-1">
+        <p class="m-0 font-semibold text-gray-700" style="font-size: medium">
+          Create an organization
+        </p>
+        <small class="text-gray-400">become an the manager</small>
+      </div>
+    </button>
+  </div>
+</div>
+
+<p-dialog
+  header="Join "
+  [modal]="true"
+  position="center"
+  [(visible)]="showJoinDialog"
+  closable="true"
+  styleClass="mb-8 "
+>
+  <div class="flex flex-column gap-3">
+    <p-inputOtp length="5"> </p-inputOtp>
+    <small class="text-gray-400"> Enter Code Issued by your Manager</small>
+
+    <p-button
+      type="submit"
+      styleClass=""
+      [disabled]=""
+      raised="true"
+      loadingIcon="pi pi-spin pi-spinner"
+      label="Join"
+      styleClass="w-full mt-3"
+    >
+    </p-button>
+  </div>
+</p-dialog>
+
+<p-dialog
+  closable="true"
+  header="Create "
+  [modal]="true"
+  position="center"
+  [(visible)]="showCreateOrg"
+  closable="true"
+  styleClass="mb-8 "
+>
+  <app-create-organization></app-create-organization>
+</p-dialog>

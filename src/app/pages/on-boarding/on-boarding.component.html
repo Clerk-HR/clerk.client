@@ -1,0 +1,13 @@
+<div class="flex flex-row h-screen">
+  <div class="hidden lg:block lg:col-5 bg lg:flex">
+    <img src="assets/clerk-lg.svg" style="width: 100%" alt="" />
+  </div>
+  <div
+    class="col-12 lg:col-7 flex flex-column justify-content-center align-items-center"
+  >
+    <div>
+      <p-steps [model]="items" ></p-steps>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
