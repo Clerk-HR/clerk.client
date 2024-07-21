@@ -69,20 +69,7 @@ export class AuthService {
   }
 
   updateCurrentUser() {
-    this.fetchCurrentUserService.fetchCurrentUser().subscribe({
-      next: (response) => {
-        const user = response.data as User
-        this.userStateSubject.next({ isAuthenticated: true, roles: [], user: user, onBoarding: user.onBoarding })
-        sessionStorage.setItem(this.userProfileKey, JSON.stringify(user));
-      },
-      error: (err) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
-            this.logout();
-          }
-        }
-      }
-    })
+    return this.fetchCurrentUserService.fetchCurrentUser();
   }
 
   register(dto: object) {

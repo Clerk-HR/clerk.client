@@ -8,6 +8,7 @@ import { UserDetailsComponent } from './pages/on-boarding/user-details/user-deta
 import { JoinCreateOrgComponent } from './pages/on-boarding/join-create-org/join-create-org.component';
 import { MainComponent } from './pages/main/main.component';
 import { DashboardComponent } from './pages/main/dashboard/dashboard.component';
+import { TasksComponent } from './pages/main/tasks/tasks.component';
 
 export const routes: Routes = [
 
@@ -50,6 +51,9 @@ export const routes: Routes = [
             {
                 path: '',
                 component: DashboardComponent
+            }, {
+                path: 'tasks',
+                component: TasksComponent
             }
         ]
     }

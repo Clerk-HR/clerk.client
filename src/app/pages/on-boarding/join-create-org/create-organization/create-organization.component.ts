@@ -46,6 +46,6 @@ export class CreateOrganizationComponent {
       this.showFormErrors = true;
       return;
     }
-    this.organizationService.CreateOrganization(this.orgForm.value);
+    this.organizationService.createOrganization(this.orgForm.value);
   }
 }

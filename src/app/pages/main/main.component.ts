@@ -5,11 +5,15 @@ import { UserService } from '../../Core/User/user.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { SideNavComponent } from './layout/side-nav/side-nav.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { DialogModule } from 'primeng/dialog';
+import { InputOtp, InputOtpModule } from 'primeng/inputotp';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [SideNavComponent, HeaderComponent, RouterOutlet],
+  imports: [SideNavComponent, HeaderComponent, RouterOutlet, DialogModule, InputOtpModule, FormsModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
@@ -23,6 +27,11 @@ export class MainComponent implements OnInit {
     console.log(this.currentUser);
 
   }
+
+  
+  
+
+  showInviteDialog: boolean = false;
 
   userService = inject(UserService)
   router = inject(Router)

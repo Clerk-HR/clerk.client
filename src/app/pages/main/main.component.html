@@ -1,8 +1,10 @@
 <div class="flex flex-row h-screen">
   <aside class="h-full">
-    <app-side-nav></app-side-nav>
+    <app-side-nav
+      (inviteToogled)="showInviteDialog = !showInviteDialog"
+    ></app-side-nav>
   </aside>
-  <main class="w-full flex flex-column ">
+  <main class="w-full flex flex-column">
     <div class="w-full">
       <app-header></app-header>
     </div>
@@ -11,3 +13,19 @@
     </div>
   </main>
 </div>
+
+<p-dialog
+  closable="true"
+  header=" Code "
+  [modal]="true"
+  position="center"
+  [(visible)]="showInviteDialog"
+  closable="true"
+  styleClass="mb-8 "
+>
+  <p-inputOtp styleClass="font-semibold" 
+    readonly="true"
+    length="6"
+    [ngModel]="currentUser.profile.organization.inviteCode"
+  ></p-inputOtp>
+</p-dialog>

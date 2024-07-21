@@ -12,15 +12,22 @@
         <span class="text-primary font-bold">{{ item.label }}</span>
       </ng-template>
       <ng-template pTemplate="item" let-item>
-        <a pRipple class="flex align-items-center p-menuitem-link">
+        <a
+          [routerLink]="item.routerLink"
+          routelin
+          routerLinkActive
+          [routerLinkActiveOptions]="{ exact: true }"
+          #route="routerLinkActive"
+          pRipple
+          class="flex align-items-center p-menuitem-link border-round hover:bg-indigo-100"
+          [class]="
+            route.isActive
+              ? 'shadow-1 bg-indigo-200 border-1 border-indigo-200 font-semibold'
+              : ''
+          "
+        >
           <span [class]="item.icon"></span>
           <span class="ml-2">{{ item.label }}</span>
-          <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
-          <span
-            *ngIf="item.shortcut"
-            class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
-            >{{ item.shortcut }}</span
-          >
         </a>
       </ng-template>
       <ng-template pTemplate="end">
@@ -35,6 +42,7 @@
           </span>
         </button>
         <button
+          (click)="toogleInvite()"
           pRipple
           class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-2 mt-1 text-color hover:surface-200"
         >
@@ -46,3 +54,4 @@
     </p-menu>
   </div>
 </div>
+

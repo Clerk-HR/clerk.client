@@ -40,21 +40,10 @@
   closable="true"
   styleClass="mb-8 "
 >
-  <div class="flex flex-column gap-3">
-    <p-inputOtp length="5"> </p-inputOtp>
-    <small class="text-gray-400"> Enter Code Issued by your Manager</small>
+  @defer(when showJoinDialog==false) {
+  <app-join-organization></app-join-organization>
 
-    <p-button
-      type="submit"
-      styleClass=""
-      [disabled]=""
-      raised="true"
-      loadingIcon="pi pi-spin pi-spinner"
-      label="Join"
-      styleClass="w-full mt-3"
-    >
-    </p-button>
-  </div>
+  }
 </p-dialog>
 
 <p-dialog
@@ -66,5 +55,8 @@
   closable="true"
   styleClass="mb-8 "
 >
+  @defer (when showCreateOrg == false) {
   <app-create-organization></app-create-organization>
+
+  }
 </p-dialog>

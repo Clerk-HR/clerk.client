@@ -6,5 +6,6 @@ export type Organization = {
     description?: string,
     logoUrl?: string,
     createdOn: number,
+    inviteCode: string,
     members: Member[]
 }

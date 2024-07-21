@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiSuccess } from '../shared/api-response';
@@ -18,14 +18,17 @@ export class UserService {
   router = inject(Router)
   baseUrl = environment.baseUrl + "/users"
 
+  userProfileKey = "clerk_profile";
+
   PostUserDetails(dto: object) {
     const headers = new HttpHeaders().set('X-Source', 'onboarding.details');
     this.http.post<ApiSuccess>(`${this.baseUrl}/user-details`, dto, { headers }).subscribe(
-      {
-        next: (response: ApiSuccess) => {
-          this.authService.updateCurrentUser();
+      () => {
+        this.authService.updateCurrentUser().subscribe(response => {
+          const user = response.data as User
+          sessionStorage.setItem(this.userProfileKey, JSON.stringify(user));
           this.router.navigateByUrl('on-boarding/join-create')
-        }
+        })
       }
     );
   }

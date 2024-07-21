@@ -25,3 +25,9 @@ body {
 .p-submenu-header {
   background-color: #f5f5f5;
 }
+
+.p-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
