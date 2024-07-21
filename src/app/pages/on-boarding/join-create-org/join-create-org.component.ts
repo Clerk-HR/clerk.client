@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { Dialog, DialogModule } from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
 import { InputOtpModule } from 'primeng/inputotp'
 import { CreateOrganizationComponent } from './create-organization/create-organization.component';
 

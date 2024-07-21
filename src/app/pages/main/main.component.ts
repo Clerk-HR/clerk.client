@@ -2,12 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../Core/Auth/auth.service';
 import { User } from '../../Core/User/user';
 import { UserService } from '../../Core/User/user.service';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { SideNavComponent } from './layout/side-nav/side-nav.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [],
+  imports: [SideNavComponent, HeaderComponent, RouterOutlet],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

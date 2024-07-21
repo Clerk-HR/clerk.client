@@ -14,7 +14,7 @@ export class FetchCurrentUserService {
 
   fetchCurrentUser(): Observable<ApiSuccess> {
     const headers = new HttpHeaders().set('X-Source', 'user.current');
-    return this.http.get<ApiSuccess>(`${this.baseUrl}/users/current-user`);
+    return this.http.get<ApiSuccess>(`${this.baseUrl}/users/current-user`, { headers });
   }
 
 }

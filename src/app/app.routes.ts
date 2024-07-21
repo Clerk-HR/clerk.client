@@ -7,6 +7,7 @@ import { OnBoardingComponent } from './pages/on-boarding/on-boarding.component';
 import { UserDetailsComponent } from './pages/on-boarding/user-details/user-details.component';
 import { JoinCreateOrgComponent } from './pages/on-boarding/join-create-org/join-create-org.component';
 import { MainComponent } from './pages/main/main.component';
+import { DashboardComponent } from './pages/main/dashboard/dashboard.component';
 
 export const routes: Routes = [
 
@@ -44,6 +45,12 @@ export const routes: Routes = [
     },
     {
         path: 'app',
-        component: MainComponent
+        component: MainComponent,
+        children: [
+            {
+                path: '',
+                component: DashboardComponent
+            }
+        ]
     }
 ];

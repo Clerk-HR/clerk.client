@@ -44,7 +44,7 @@ export class AuthService {
               this.router.navigateByUrl('on-boarding/join-create')
               break;
             case OnBoarding.Complete:
-              this.router.navigateByUrl(`app/${user.profile.organization.id}`)
+              this.router.navigateByUrl(`app`)
               break;
             default:
               break;

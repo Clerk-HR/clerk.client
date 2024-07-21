@@ -4,8 +4,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { ApiCallState, ApiCallStateService } from '../../../../Core/shared/api-call-state.service';
-import { OrganizationService } from '../../../../Core/organization.service';
 import { Subscription } from 'rxjs';
+import { OrganizationService } from '../../../../Core/Organization/organization.service';
 
 @Component({
   selector: 'app-create-organization',

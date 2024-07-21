@@ -1,0 +1,48 @@
+<div class="h-full shadow-2 p-3 bg-custom">
+  <div class="header flex align-items-center ml-2 mt-4 mb-5">
+    <img src="assets/logo.svg" class="w-5rem mr-1" alt="" />
+    <span class="text-lg font-semibold text-bluegray-500">| Sybrin</span>
+  </div>
+  <div class="menu">
+    <p-menu
+      [model]="items"
+      styleClass="w-full md:w-15rem bg-transparent border-none"
+    >
+      <ng-template pTemplate="submenuheader" let-item>
+        <span class="text-primary font-bold">{{ item.label }}</span>
+      </ng-template>
+      <ng-template pTemplate="item" let-item>
+        <a pRipple class="flex align-items-center p-menuitem-link">
+          <span [class]="item.icon"></span>
+          <span class="ml-2">{{ item.label }}</span>
+          <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
+          <span
+            *ngIf="item.shortcut"
+            class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
+            >{{ item.shortcut }}</span
+          >
+        </a>
+      </ng-template>
+      <ng-template pTemplate="end">
+        <p class="font-bold text-500 ml-2">Settings</p>
+        <button
+          pRipple
+          class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-2 mt-2 text-color hover:surface-200"
+        >
+          <span class="flex flex-row align-items-center">
+            <i class="pi pi-building-columns mr-1"></i>
+            <span class="text-"> Company </span>
+          </span>
+        </button>
+        <button
+          pRipple
+          class="relative overflow-hidden w-full p-link flex align-items-center p-2 pl-2 mt-1 text-color hover:surface-200"
+        >
+          <span class="flex flex-row align-items-center">
+            <i class="pi pi-qrcode mr-2"></i><span class="text-"> Invite </span>
+          </span>
+        </button>
+      </ng-template>
+    </p-menu>
+  </div>
+</div>

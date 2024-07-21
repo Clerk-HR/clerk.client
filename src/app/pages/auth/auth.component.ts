@@ -23,7 +23,7 @@ export class AuthComponent implements OnInit {
         console.log(this.authInitState);
       }
     )
-  this.authService.initAuthStatus();
+    this.authService.initAuthStatus();
 
   }
 

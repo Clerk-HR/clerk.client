@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.development';
 import { Router } from '@angular/router';
-import { AuthService } from './Auth/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ApiSuccess } from './shared/api-response';
+import { AuthService } from '../Auth/auth.service';
+import { environment } from '../../../environments/environment.development';
+import { ApiSuccess } from '../shared/api-response';
 
 @Injectable({
   providedIn: 'root'
