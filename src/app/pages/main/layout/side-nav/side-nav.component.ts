@@ -34,6 +34,7 @@ export class SideNavComponent {
       separator: true
     },
     {
+      label:'Main',
       items: [
         {
           label: 'Dashboard',
