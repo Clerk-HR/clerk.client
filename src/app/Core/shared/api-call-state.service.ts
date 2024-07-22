@@ -66,4 +66,4 @@ export interface ApiCallState<T = ApiSuccess | ApiError> {
   awaitingResponse: boolean;
   success: boolean | null;
   data: T | null;
-}
+} 

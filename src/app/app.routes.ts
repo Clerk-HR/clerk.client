@@ -9,6 +9,9 @@ import { JoinCreateOrgComponent } from './pages/on-boarding/join-create-org/join
 import { MainComponent } from './pages/main/main.component';
 import { DashboardComponent } from './pages/main/dashboard/dashboard.component';
 import { TasksComponent } from './pages/main/tasks/tasks.component';
+import { ManageEmployeesComponent } from './pages/main/employees/manage-employees/manage-employees.component';
+import { LeaveComponent } from './pages/main/employees/leave/leave.component';
+import { EmployeesComponent } from './pages/main/employees/employees.component';
 
 export const routes: Routes = [
 
@@ -54,6 +57,20 @@ export const routes: Routes = [
             }, {
                 path: 'tasks',
                 component: TasksComponent
+            },
+            {
+                path: 'employees',
+                component: EmployeesComponent,
+                children: [
+                    {
+                        path: 'manage',
+                        component: ManageEmployeesComponent
+                    },
+                    {
+                        path: 'leave',
+                        component: LeaveComponent
+                    }
+                ]
             }
         ]
     }

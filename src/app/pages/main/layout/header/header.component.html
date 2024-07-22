@@ -1,1 +1,56 @@
-<p>header works!</p>
+<p-toolbar styleClass="px-2 border-noround border-left-none">
+  <ng-template pTemplate="start">
+    <div class="flex flex-column">
+      <p-breadcrumb [model]="items" [home]="home">
+        <ng-template pTemplate="item" let-item>
+          <span
+            class="text-gray-600"
+            [class]="item.isActive ? 'font-semibold' : ''"
+            >{{ item.label }}</span
+          >
+        </ng-template>
+        <ng-template pTemplate="separator"> &bull; </ng-template>
+      </p-breadcrumb>
+      <div class="ml-3 text-xl font-bold mb-2">Employees</div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <div class="flex flex-row align-items-center gap-4">
+      <div>
+        <p-button
+          icon="pi pi-bell"
+          styleClass="border-0 border-transparent bg-gray-100 hover:bg-gray-200 "
+          size="large"
+          rounded="true"
+          outlined="true"
+        ></p-button>
+        <div
+          class="absolute top-0 flex align-items-center justify-content-center border-circle bg-primary"
+          style="
+            font-size: xx-small;
+            margin-top: 1.6rem;
+            margin-left: 1.5rem;
+            width: 1rem;
+            height: 1rem;
+          "
+        >
+          <span>1</span>
+        </div>
+      </div>
+      <div class="flex flex-row align-items-center gap-2 cursor-pointer">
+        <img
+          src="assets/img/employees3.webp"
+          class="border-circle hover:shadow-2"
+          style="width: 2.6rem"
+        />
+        <div class="flex flex-column">
+          <span class="text-sm font-semibold text-bluegray-800"
+            >Manasseh Changa</span
+          >
+          <span class="text-xs text-700">Manager</span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toolbar>

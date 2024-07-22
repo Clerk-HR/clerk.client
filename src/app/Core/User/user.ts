@@ -6,9 +6,9 @@ export type User = {
     avatarUrl?: string,
     fullname: string,
     phoneNumber: string,
-    onBoarding: OnBoarding,
+    onBoarding?: OnBoarding,
     createdOn: number
-    profile: Member
+    profile?: Member
 }
 
 

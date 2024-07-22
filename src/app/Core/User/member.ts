@@ -5,14 +5,14 @@ import { Organization } from "../Organization/organization";
 export interface Member {
     id: string,
     user: User,
-    organization: Organization,
+    organization?: Organization,
     roles: Role[],
     JoinedOn: number
 }
 
 
 export enum Role {
-    User,
-    employee,
-    manager
+    User ='user',
+    employee= 'employee',
+    manager ='manager'
 }

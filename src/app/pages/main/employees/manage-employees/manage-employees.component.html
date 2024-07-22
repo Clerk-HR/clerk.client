@@ -1,0 +1,78 @@
+<p-table
+  #dt1
+  [value]="employees"
+  [globalFilterFields]="['user.email', 'user.fullname', 'user.phoneNumber']"
+  selectionMode="single"
+  [(selection)]="selectedEmployee"
+  dataKey="id"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  [rows]="5"
+  [paginator]="true"
+  stateStorage="session"
+  stateKey="employees-session"
+>
+  <ng-template pTemplate="caption">
+    <p-iconField iconPosition="left">
+      <p-inputIcon>
+        <i class="pi pi-search"></i>
+      </p-inputIcon>
+      <input
+        pInputText
+        type="text"
+        (input)="dt1.filterGlobal($event.target.value, 'contains')"
+        placeholder="Search"
+      />
+    </p-iconField>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr class="border-round">
+      <th style="width: 30%">Employee</th>
+      <th style="width: 25%">Email</th>
+      <th style="width: 25%">Contact</th>
+      <th style="width: 25%">Role</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-employee>
+    <tr [pSelectableRow]="employee">
+      <td>
+        <div class="flex flex-row gap-2 align-items-center w-full">
+          <img
+            [alt]="employee.user.fullname"
+            [src]="employee.user.avatarUrl"
+            style="vertical-align: middle"
+            class="w-3rem border-circle"
+          />
+          <span class="ml-1 vertical-align-middle">{{
+            employee.user.fullname
+          }}</span>
+        </div>
+      </td>
+      <td>
+        <span class="p-column-title">Email</span>
+        <span class="ml-1 vertical-align-middle">{{
+          employee.user.email
+        }}</span>
+      </td>
+      <td>
+        <span class="p-column-title">Contact</span>
+
+        <span class="ml-1 vertical-align-middle">{{
+          employee.user.phoneNumber
+        }}</span>
+      </td>
+      <td>
+        <span class="p-column-title">Role</span>
+        <p-tag
+          [value]="employee.roles[0]"
+          [severity]="getSeverity(employee.roles[0])"
+        />
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="4">No customers found.</td>
+    </tr>
+  </ng-template>
+</p-table>

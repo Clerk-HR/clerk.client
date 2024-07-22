@@ -1,10 +1,10 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, throwError, catchError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { ApiError, ApiSuccess } from '../shared/api-response';
 import { environment } from '../../../environments/environment.development';
 import { OnBoarding, User } from '../User/user';
-import { AuthResponse, UserState } from './Auth';
+import { AuthResponse } from './Auth';
 import { Router } from '@angular/router';
 import { Role } from '../User/member';
 import { FetchCurrentUserService } from '../shared/fetch-current-user.service';
@@ -23,9 +23,6 @@ export class AuthService {
   private readonly tokenKey = 'access_token'
   private readonly userProfileKey = 'clerk_profile'
 
-  private userStateSubject = new BehaviorSubject<UserState>({ isAuthenticated: false, roles: [], user: null, onBoarding: OnBoarding.CreateAccount })
-  private userState = this.userStateSubject.asObservable();
-
   initAuthStatus() {
     const token = this.getToken();
     if (token) {
@@ -33,7 +30,6 @@ export class AuthService {
       this.fetchCurrentUserService.fetchCurrentUser().subscribe({
         next: (response) => {
           const user = response.data as User
-          this.userStateSubject.next({ isAuthenticated: true, roles: [], user: user, onBoarding: user.onBoarding })
           sessionStorage.setItem(this.userProfileKey, JSON.stringify(user));
 
           switch (user.onBoarding) {
@@ -104,10 +100,6 @@ export class AuthService {
     localStorage.removeItem(this.tokenKey)
     sessionStorage.removeItem(this.userProfileKey)
 
-    this.userStateSubject.next({
-      isAuthenticated: false, roles: [], user: null, onBoarding: OnBoarding.CreateAccount
-    })
-
     this.router.navigateByUrl('auth/sign-in')
 
   }
@@ -122,8 +114,6 @@ export class AuthService {
         if (!(user.profile == null || undefined)) {
           roleToSet = user.profile.roles
         }
-
-        this.userStateSubject.next({ isAuthenticated: true, roles: roleToSet, user: user, onBoarding: user.onBoarding })
         sessionStorage.setItem(this.userProfileKey, JSON.stringify(user));
         switch (user.onBoarding) {
           case OnBoarding.UserDetails:

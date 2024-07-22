@@ -13,27 +13,12 @@ import { InputOtpModule } from 'primeng/inputotp';
 @Component({
   selector: 'app-side-nav',
   standalone: true,
-  imports: [PanelMenuModule, MenuModule, PanelModule, BadgeModule, RippleModule, AvatarModule, RouterLink, ],
+  imports: [PanelMenuModule, MenuModule, PanelModule, BadgeModule, RippleModule, AvatarModule, RouterLink,],
   templateUrl: './side-nav.component.html',
   styleUrl: './side-nav.component.css'
 })
 export class SideNavComponent {
 
-  // currentRoute: string;
-
-  // constructor() {
-  //   this.router.events.pipe(
-  //     filter(event => event instanceof NavigationEnd)
-  //   ).subscribe(() => {
-  //     this.currentRoute = this.router.url;
-  //   });
-  // }
-
-  // isActiveRoute(route: string): boolean {
-  //   // Normalize the route by removing any query params or hash fragments
-  //   const normalizedCurrentRoute = this.currentRoute.split('?')[0].split('#')[0];
-  //   return normalizedCurrentRoute === route;
-  // }
 
 
   collapsed: boolean = localStorage.getItem('admin-nav') == 'true' ? true : false;
@@ -47,9 +32,8 @@ export class SideNavComponent {
   items: MenuItem[] = [
     {
       separator: true
-  },
+    },
     {
-      label: 'Main',
       items: [
         {
           label: 'Dashboard',
@@ -69,18 +53,14 @@ export class SideNavComponent {
         {
           label: 'Manage',
           icon: 'pi pi-users',
+          routerLink: 'employees/manage'
 
         },
         {
           label: 'Leave',
           icon: 'pi pi-inbox',
-          badge: '2'
+          routerLink: 'employees/leave'
         },
-        {
-          label: 'Attendance',
-          icon: 'pi pi-sign-out',
-
-        }
       ]
     },
     {

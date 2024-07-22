@@ -43,7 +43,7 @@
 
     @if (!userDetailState?.success && userDetailState?.data!=null) {
     <small class="text-red-400 mx-1" *ngIf="userDetailState?.data.code == 400">
-      {{ userDetailState.data.messages }}
+      {{ userDetailState.data?.messages }}
     </small>
     }
 
